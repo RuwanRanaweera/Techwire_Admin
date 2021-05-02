@@ -1,0 +1,31 @@
+
+<br>
+<mat-card>
+  <section class="mat-typrograohy" >
+    <h3>Update User</h3>
+  </section>
+  <mat-divider> </mat-divider>
+  <br>
+  <form [formGroup]="updateForm" class="edit-form">
+    <mat-form-field class="field-full-width" >
+      <input matInput placeholder=" Full Name" formControlName="fullName" #fullName>
+    </mat-form-field>
+    <mat-form-field class="field-full-width" >
+        <input matInput placeholder="Email" formControlName="email" #email>
+      </mat-form-field>
+      <mat-form-field class="field-full-width"  >
+         <mat-select placeholder="Gender" #gender>
+           <mat-option value="Male" >Male</mat-option>
+           <mat-option value="Female" >Female</mat-option>
+           <mat-option value="Other" >Other</mat-option>
+         </mat-select>
+        </mat-form-field>
+      <mat-form-field class="field-full-width" >
+          <input type="password" matInput placeholder="Password" formControlName="password" #password>
+        </mat-form-field>
+        <mat-divider> </mat-divider><br><br>
+        <button mat-raised-button color="accent" [routerLink]="['/list']"  >Cancel</button>
+        <button type="submit" (click)="updateUser(fullName.value,email.value,password.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary" [routerLink]="['/list']"  >Save</button>
+
+  </form>
+</mat-card>
