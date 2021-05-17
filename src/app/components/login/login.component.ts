@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder,Validator, Validators } from '@angular/forms';
+import { FormGroup,FormBuilder, Validators} from '@angular/forms';
 import {Router } from '@angular/router';
 import { SUserService } from '../../s-user.service';
 
@@ -18,31 +18,33 @@ export class LoginComponent implements OnInit {
       });
    }
 
+   ngOnInit() {
 
-// checklogin(email,password) {
-// if(email==='s@g.c'&&password==='1234'){
-//   this.router.navigate(['/list']);
+     if(localStorage.getItem('adminId')!=null)
+    this.router.navigateByUrl('/login');
 
+  }
+  checklogin(email:any,password:any){
+    this.userService.login(email,password).subscribe(
+      (res:any )=> {
+        localStorage.setItem('adminId',res.data[0].adminId);
+        this.userService.isLogin=true;
+      console.log(res);
+        this.router.navigateByUrl('/user');
+        console.log("Login Successfully");
 
-// }
-// else{
-// console.log('errrrrr');
-// }
+      },
+      err => {
+        if(err.status === 400)
+        console.log("incorrect username or password");
+        else
+        console.log(err);
+      }
+    );
 
-
-// }
-
-
-checklogin(email,password){
-  this.userService.loginUser(email,password).subscribe(()=>{
-    this.snackBar.open(' Successfully','Ok',{duration:3000});
-    this.router.navigate(['/login']);
-  });
-
-}
-
-
-  ngOnInit() {
   }
 
+
 }
+
+

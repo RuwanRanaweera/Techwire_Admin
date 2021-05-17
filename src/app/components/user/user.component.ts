@@ -42,6 +42,16 @@ export class UserComponent implements OnInit {
     });
    }
 
+   editUser(id){
+    this.userService.approveUser(id).subscribe((res)=>{
+      alert("successfully approve");
+      this.fetchUsers();
+    },(err)=>{
+      alert("something wrong");
+    });
+
+   }
+
 
 }
 

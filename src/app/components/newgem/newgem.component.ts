@@ -39,6 +39,15 @@ export class NewgemComponent implements OnInit {
       this.fetchGems();
     });
    }
+   editGem(gemID){
+    this.gemsService.approveGem(gemID).subscribe((res)=>{
+      alert("successfully approve");
+      this.fetchGems();
+    },(err)=>{
+      alert("something wrong");
+    });
+
+   }
 
 
 }

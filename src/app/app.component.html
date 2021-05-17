@@ -12,29 +12,32 @@
           </li>
 
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/create">Create</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/user">NewUsers</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/olduser">OLdUsers</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/newgem">NewGems</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/oldgem">OldGems</a>
-      </li>
-<!--
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLink="/create" *ngIf="!userService.isLogin">Create</a>
       </li> -->
       <li class="nav-item">
+        <a class="nav-link" routerLink="/user" *ngIf="userService.isLogin">NewUsers</a>
+      </li>
 
-          <button mat-raised-button color="accent" [routerLink]="['/login']"  >Login</button>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/olduser" *ngIf="userService.isLogin">OLdUsers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/newgem" *ngIf="userService.isLogin">NewGems</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/oldgem" *ngIf="userService.isLogin">OldGems</a>
+      </li>
+
+
+      <li class="nav-item">
+
+          <button mat-raised-button color="accent" [routerLink]="['/login']" *ngIf="!userService.isLogin" >Login</button>
+        </li>
+
+        <li class="nav-item">
+
+          <button mat-raised-button color="accent"(click)="logOut()" *ngIf="userService.isLogin" >Logout</button>
         </li>
 
 

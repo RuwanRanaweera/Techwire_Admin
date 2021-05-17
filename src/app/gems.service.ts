@@ -17,4 +17,9 @@ export class GemsService {
   deleteGem(gemID){
     return this.http.delete(`${this.uri}/Gem/Delete/${gemID}`);
     }
+
+    approveGem(gemID){
+      return this.http.put(`${this.uri}/Gem/Update/${gemID}`,{});
+    }
+
 }

@@ -7,11 +7,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SUserService {
 
+
   uri = 'http://localhost:49789/api';
 
 
   constructor(private http: HttpClient ) { }
 
+  isLogin =false;
   getUsers(){
     return this.http.get(`${this.uri}/User/Select/`);
 
@@ -32,12 +34,13 @@ export class SUserService {
 
   }
 
-  loginUser(email, password){
+  login(email, password){
+
     const user = {
       email:email,
       password: password
     };
-    return this.http.post(`${this.uri}/User/login`,user);
+    return this.http.post(`${this.uri}/Admin/login`,user);
   }
 
   updateUser(id, name , email , password ){
@@ -53,6 +56,10 @@ export class SUserService {
 
   deleteUser(id){
 return this.http.delete(`${this.uri}/User/Delete/${id}`);
+}
+
+approveUser(id){
+  return this.http.put(`${this.uri}/User/Update/${id}`,{});
 }
 
 }
