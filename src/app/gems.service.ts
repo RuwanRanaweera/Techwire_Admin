@@ -14,6 +14,17 @@ export class GemsService {
 
   }
 
+  getBid(){
+    return this.http.get(`${this.uri}/Bid/Select/`);
+
+  }
+
+
+  getGem(gemID){
+    return this.http.get(`${this.uri}/Gem/Select/${gemID}`);
+
+  }
+
   deleteGem(gemID){
     return this.http.delete(`${this.uri}/Gem/Delete/${gemID}`);
     }
@@ -22,4 +33,16 @@ export class GemsService {
       return this.http.put(`${this.uri}/Gem/Update/${gemID}`,{});
     }
 
+    // updategem(gemID){
+    //   return this.http.put(`${this.uri}/Gem/Updates/${gemID}`,{});
+    // }
+
+    updategem(gemID,price, bidingTime){
+      //console.log(datetime);
+      const user = {
+      price: price,
+      bidingTime: bidingTime
+      };
+      return this.http.put(`${this.uri}/Gem/Updates/${gemID}`,user);
+    }
 }

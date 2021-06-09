@@ -2,25 +2,29 @@
   <h2>Approve Gem List</h2>
  <table class="table table-hover"   >
    <tr>
-    <th scope="col">Gem Id</th>
+    <!-- <th scope="col">Gem Id</th> -->
      <th scope="col">Gem Name</th>
      <th scope="col">Price</th>
      <th scope="col">Description</th>
+    
      <th scope="col">Gem Image</th>
 
      <th scope="col">User Id</th>
+     <th scope="col">Gem Type</th>
      <th scope="col">Admin Approve</th>
 
 
    </tr>
 <tr class="table-secondary" *ngFor="let u of  gemListApprove"  >
-    <td>{{u.gemID}}</td>
+    <!-- <td>{{u.gemID}}</td> -->
 <td>{{u.gemName}}</td>
-<td> {{u.price}}</td>
+<td>Rs: {{u.price}}</td>
 <td> {{u.gemDescription}}</td>
 <td> <img [src]="u.gemImage"></td>
 <td> {{u.userId}}</td>
-<td> {{u.approve}}</td>
+<td> {{u.gemBid? 'Bid':'Fix'}}</td>
+<td> {{u.approve? ' Yes':'No'}}</td>
+
 
 
 <td><button mat-button color="warn" (click)="deleteGem(u.gemID)" >Delete</button></td>

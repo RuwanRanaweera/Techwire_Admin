@@ -13,7 +13,7 @@ import { SUserService } from '../../s-user.service';
 })
 export class ListComponent implements OnInit {
 
-  user:user[]; 
+  user:user[];
   constructor(private userService: SUserService, private router:Router) { }
 
   ngOnInit() {

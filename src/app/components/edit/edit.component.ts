@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 import {Router, ActivatedRoute } from '@angular/router';
 import { FormGroup,FormBuilder,Validator, Validators } from '@angular/forms';
- 
+
 import { MatSnackBar } from '@angular/material';
 
 import { user } from '../../user.model';
-import { SUserService } from '../../s-user.service';
+import {GemsService} from '../../gems.service';
 
 @Component({
   selector: 'app-edit',
@@ -17,36 +17,34 @@ export class EditComponent implements OnInit {
 
   id:String;
   user:any={};
-  updateForm:FormGroup; 
+  updateForm:FormGroup;
 
-  constructor(private userService: SUserService, private router:Router,private route:ActivatedRoute  , private snackBar:MatSnackBar,private fb:FormBuilder) { 
+  constructor(private gemsService: GemsService, private router:Router,private route:ActivatedRoute  , private snackBar:MatSnackBar,private fb:FormBuilder) {
 this.createForm();
 
   }
 createForm(){
   this.updateForm=this.fb.group({
-    fullName:['',Validators.required],
-    email:['',Validators.required],
-    password:['',Validators.required]
+    price:['',Validators.required]
+
     });
   }
   ngOnInit() {
     this.route.params.subscribe(params=>{
-this.id=params.id;
-this.userService.getUserById(this.id).subscribe(res=>{
+this.id=params.gemID;
+this.gemsService.getGem(this.id).subscribe(res=>{
   this.user=res;
-  this.updateForm.get('fullName').setValue(this.user.fullName);
-  this.updateForm.get('email').setValue(this.user.email);
-  this.updateForm.get('password').setValue(this.user.password);
+  this.updateForm.get('price').setValue(this.user.price);
+
 })
     });
   }
 
-  updateUser(fullName,email,password){
-      this.userService.updateUser(this.id,fullName,email,password).subscribe(()=>{
-        this.snackBar.open('Updated Successfully','Ok',{duration:3000});
-    });
-  }
+  // updateUser(price){
+  //     this.gemsService.updategem(this.id,price).subscribe(()=>{
+  //       this.snackBar.open('Updated Successfully','Ok',{duration:3000});
+  //   });
+  // }
 
 
 }

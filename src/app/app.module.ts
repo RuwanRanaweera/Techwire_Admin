@@ -20,6 +20,9 @@ import { OlduserComponent } from './components/olduser/olduser.component';
 import { NewgemComponent } from './components/newgem/newgem.component';
 import { OldgemComponent } from './components/oldgem/oldgem.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MeeetingComponent } from './components/meeeting/meeeting.component';
+import { OldmeetComponent } from './components/oldmeet/oldmeet.component';
+import { BidingComponent } from './components/biding/biding.component';
 
 
 
@@ -35,7 +38,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     OlduserComponent,
     NewgemComponent,
     OldgemComponent,
-    DashboardComponent
+    DashboardComponent,
+    MeeetingComponent,
+    OldmeetComponent,
+    BidingComponent
   ],
   imports: [
     BrowserModule,

@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
         this.userService.isLogin=true;
       console.log(res);
         this.router.navigateByUrl('/user');
+        alert("Login successfully ");
         console.log("Login Successfully");
 
       },

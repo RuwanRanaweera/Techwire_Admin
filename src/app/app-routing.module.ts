@@ -11,7 +11,9 @@ import { NewgemComponent } from './components/newgem/newgem.component';
 import { OldgemComponent } from './components/oldgem/oldgem.component';
 import { OlduserComponent } from './components/olduser/olduser.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
+import {  MeeetingComponent } from './components/meeeting/meeeting.component';
+import {  OldmeetComponent } from './components/oldmeet/oldmeet.component';
+import {  BidingComponent } from './components/biding/biding.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home', pathMatch: 'full' },
@@ -24,7 +26,10 @@ const routes: Routes = [
    {path: 'olduser', component:OlduserComponent },
    {path: 'dashboard', component:DashboardComponent},
    {path: 'newgem', component:NewgemComponent},
-   {path: 'oldgem', component:OldgemComponent}
+   {path: 'oldgem', component:OldgemComponent},
+   {path: 'meeting', component: MeeetingComponent},
+   {path: 'oldmeet', component: OldmeetComponent},
+   {path: 'biding', component: BidingComponent}
  ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

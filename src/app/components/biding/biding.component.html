@@ -1,0 +1,23 @@
+<div>
+  <h2>Approve Bidng Gem List</h2>
+ <table class="table table-hover"   >
+   <tr>
+
+    <th scope="col">Bid Id</th>
+     <th scope="col">Gem Id</th>
+     <th scope="col">UserId</th>
+     <th scope="col">Bid Value</th>
+
+
+   </tr>
+<tr class="table-secondary" *ngFor="let u of  bidList"  >
+    <!-- <td>{{u.gemID}}</td> -->
+<td>{{u.bidId}}</td>
+<td>{{u.gemID}}</td>
+<td> {{u.userId}}</td>
+<td> {{u.bidValue}}</td>
+
+
+   </tr>
+ </table>
+</div>

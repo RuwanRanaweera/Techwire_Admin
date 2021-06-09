@@ -2,27 +2,43 @@
   <h2>Pending Gems List</h2>
  <table class="table table-hover"   >
    <tr>
-    <th scope="col">Gem Id</th>
+    <!-- <th scope="col">Gem Id</th> -->
      <th scope="col">Gem Name</th>
      <th scope="col">Price</th>
+     <th scope="col" *ngIf="edit">Biding Time</th>
      <th scope="col">Description</th>
      <th scope="col">Gem Image</th>
 
      <th scope="col">User Id</th>
+     <th scope="col">Gem Type</th>
      <th scope="col">Admin Approve</th>
 
 
    </tr>
 <tr class="table-secondary" *ngFor="let u of  gemListApprove"  >
-    <td>{{u.gemID}}</td>
+
 <td>{{u.gemName}}</td>
-<td> {{u.price}}</td>
+<td *ngIf="!u.edit"> Rs: {{u.price}}</td>
+
+<td *ngIf="u.edit"> <input type="text" #gemprice value="{{u.price}}"></td>
+<td *ngIf="u.edit"> <input type="datetime-local" #gemtime></td>
+<td *ngIf="!u.edit && edit"> </td>
 <td> {{u.gemDescription}}</td>
+
 <td> <img [src]="u.gemImage"></td>
 <td> {{u.userId}}</td>
-<td> {{u.approve}}</td>
- <td>
+<td> {{u.gemBid? 'Bid':'Fix'}}</td>
+<td> {{u.approve? ' Yes':'No'}}</td>
+<td>
+<button>
+  <a (click)="goToLink(u.certificate)">certificate link</a>
+</button></td>
 
+ <td>
+  <button *ngIf="u.gemBid==1 && !u.edit" mat-button color="primary" (click)="onEdit(u)" >Edit </button>
+  <button *ngIf="u.gemBid==0 && !u.edit" mat-button color="primary" (click)="onEdit(u)" >Edit </button>
+  <button *ngIf="u.gemBid==1 && u.edit" mat-button color="primary" (click)="onSubmit(u)">Submit</button>
+  <button *ngIf="u.gemBid==0 && u.edit" mat-button color="primary" (click)="onSubmit(u)">Submit</button>
    <button mat-button color="primary" (click)="editGem(u.gemID)" >Approve</button>
   <button mat-button color="warn" (click)="deleteGem(u.gemID)" >Delete</button></td>
    </tr>

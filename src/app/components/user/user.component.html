@@ -17,8 +17,8 @@
 <td> {{u.lastName}}</td>
 <td> {{u.email}}</td>
 <td> {{u.address}}</td>
-<td> {{u.userType}}</td>
-<td> {{u.approve}}</td>
+<td> {{u.userType? 'Seller':'Buyer'}}</td>
+<td> {{u.approve? ' Yes':'No'}}</td>
 <td>
   <button mat-button color="primary" (click)="editUser(u.id)" >Approve</button>
   <button mat-button color="warn" (click)="deleteUser(u.id)" >Delete</button></td>

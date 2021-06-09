@@ -12,6 +12,9 @@ export class OldgemComponent implements OnInit {
   ngOnInit() {
     this.fetchGems();
    }
+
+
+
    gemList;
    gemListApprove=[];
    fetchGems(){

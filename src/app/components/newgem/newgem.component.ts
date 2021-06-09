@@ -1,3 +1,5 @@
+import { ViewChild } from '@angular/core';
+import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import {GemsService} from '../../gems.service';
 
@@ -8,11 +10,20 @@ import {GemsService} from '../../gems.service';
 })
 export class NewgemComponent implements OnInit {
 
+  @ViewChild('gemprice') gemprice: ElementRef;
+  @ViewChild('gemtime') gemtime: ElementRef;
+
+  edit=false;
   constructor(private gemsService: GemsService) { }
 
   ngOnInit() {
    this.fetchGems();
   }
+
+  goToLink(url: string){
+    window.open(url, "_blank");
+}
+
   gemList;
   gemListApprove=[];
   fetchGems(){
@@ -24,7 +35,10 @@ export class NewgemComponent implements OnInit {
 
       this.gemList=res.data;
 
-
+      this.gemList.map(gem=>{
+      return gem.edit=false;
+      })
+      console.log(this.gemList);
       let indx=0;
       this.gemList.forEach((gem)=>{
         if(!gem.approve){
@@ -47,6 +61,24 @@ export class NewgemComponent implements OnInit {
       alert("something wrong");
     });
 
+   }
+
+   onSubmit(gem){
+
+     //console.log(this.gemprice.nativeElement.value);
+     this.gemsService.updategem(gem.gemID,this.gemprice.nativeElement.value,this.gemtime.nativeElement.value).subscribe((res)=>{
+       console.log(res);
+       gem.edit=false;
+this.edit=false;
+        this.fetchGems();
+
+
+     })
+   }
+
+   onEdit(gem){
+this.edit=true;
+    gem.edit=true;
    }
 
 

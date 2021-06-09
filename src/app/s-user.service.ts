@@ -19,6 +19,11 @@ export class SUserService {
 
   }
 
+  getMeet(){
+    return this.http.get(`${this.uri}/Meet/Select/`);
+
+  }
+
   getUserById(id){
     return this.http.get(`${this.uri}/user/${id}`);
   }
@@ -58,8 +63,16 @@ export class SUserService {
 return this.http.delete(`${this.uri}/User/Delete/${id}`);
 }
 
+deleteMet(meetingId){
+  return this.http.delete(`${this.uri}/Meet/Delete/${meetingId}`);
+  }
+
 approveUser(id){
   return this.http.put(`${this.uri}/User/Update/${id}`,{});
+}
+
+approveMet(meetingId){
+  return this.http.put(`${this.uri}/Meet/Update/${meetingId}`,{});
 }
 
 }
